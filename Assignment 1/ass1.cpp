@@ -21,8 +21,8 @@ using namespace std;
 
 
 
- char cTextFileName[]   = "ass1.txt";
- char cBinaryFileName[] = "ass1.dat";
+const char cTextFileName[]   = "ass1.txt";
+const char cBinaryFileName[] = "ass1.dat";
 
 const int cMaxRecs = 100;
 const int cMaxChars = 30;
@@ -35,7 +35,6 @@ const int cMaxSubjects = 8;
 
 
 enum StatusType{eEnrolled,eProvisional,eWithdrawn};
-
 struct SubjectType{ char Code[8]; StatusType Status; int Mark;};
 
 
@@ -49,9 +48,6 @@ struct StudentRecord{
 	SubjectType Subjects[cMaxSubjects];
 
 };
-
-
-
 
 
 // ============= Global Data =========================================
@@ -70,11 +66,11 @@ int gNumRecs=0;
 void PrintRecord(int i);
 int FindRecord(long StudentNum);
 int findSubjectCode(char subjectCode[8],int studentRecordId);
-bool ReadTextFile(char Filename[]); //reads text data from file to gRecs[] array
-bool WriteTextFile(char Filename[]); //writes text data from gRecs[] to file
-bool ReadBinaryFile(char Filename[]); //reads binary data from file to gRecs[] array
-bool WriteBinaryFile(char Filename[]); //writes binary data from gRecs[] to file
-void WriteBinaryRecord(char Filename[], int Pos);
+bool ReadTextFile(const char *Filename); //reads text data from file to gRecs[] array
+bool WriteTextFile(const char *Filename); //writes text data from gRecs[] to file
+bool ReadBinaryFile(const char *Filename); //reads binary data from file to gRecs[] array
+bool WriteBinaryFile(const char *Filename); //writes binary data from gRecs[] to file
+void WriteBinaryRecord(const char *Filename, int Pos);
 
 
 // ============= Public Function Definitions =========================
@@ -90,6 +86,7 @@ void ReadFile()
 	}else{
 		cout<<"Unable to read binary file.. Reading Text file..\n";
 		if(ReadTextFile(cTextFileName)){
+			//WriteBinaryFile(cBinaryFileName);
 			cout<<"Read text file\n";
 		}else{
 			cout<<"Unable to read text file and binary file.. \n";
@@ -133,22 +130,8 @@ void SaveFile()
 		
 		cout<<"Unable to write to binary file...\nAttempting to write to text file...\n";
 		//Saving data to text file
-		ofstream fout;
-		fout.open("ass1.txt");
-		if(!fout.good()){
-			cout<<"Cant find text data file for writing !\n";
-				exit(EXIT_FAILURE);
-			}
-		for (i=0;i<gNumRecs;i++){
-			fout<<gRecs[i].StudentNo<<endl;
-			fout<<gRecs[i].FirstName<<" "<<gRecs[i].LastName<<endl;
-			fout<<gRecs[i].NumSubjects<<endl;
-			for(j=0;j<gRecs[i].NumSubjects;j++){
-				fout<<gRecs[i].Subjects[j].Code<<" "<<gRecs[i].Subjects[j].Status<<" "<<gRecs[i].Subjects[j].Mark<<endl;
-			}
-			fout<<endl;
-		}
-		fout.close();
+		
+		WriteTextFile(cTextFileName);
 		cout<<"Records Saved to text file\n";
 	}
 }
@@ -158,7 +141,7 @@ void SaveFile()
 void UpdateRecord()
 
 {
-	int Pos=0;
+	//int Pos=0;
 	long studentNumber;
 	int studentRecordId;			//Stores the index of gNumRecs
 	char subjectCode[8];
@@ -197,13 +180,12 @@ void UpdateRecord()
 				
 				cout<<"\nChanging "<< gRecs[studentRecordId].Subjects[foundSubjectCode].Status << " to ==> " << newStatus <<endl;
 				
-				gRecs[studentRecordId].Subjects[foundSubjectCode].Status=(StatusType)newStatus;  			//Check
+				gRecs[studentRecordId].Subjects[foundSubjectCode].Status=(StatusType)newStatus;  			
 				cout<<"changed status";
 			}
-		
-			//TODO	
+			
 			WriteBinaryRecord(cBinaryFileName,studentRecordId);
-			SaveFile();
+			//SaveFile();
 		}
 		else{
 			cout<<"subject code not found";
@@ -283,7 +265,7 @@ int findSubjectCode(char subjectCode[8],int studentRecordId)
 }
 
 
-bool ReadTextFile(char Filename[]){ 
+bool ReadTextFile(const char *Filename){ 
 //reads text data from file to gRecs[] array
 	int subjectStatus;
 	ifstream fin;
@@ -304,19 +286,8 @@ bool ReadTextFile(char Filename[]){
 		fin>> gRecs[i].LastName;
 		fin>> gRecs[i].NumSubjects;
 		for (j=0;j<gRecs[i].NumSubjects;j++){
-			fin>>gRecs[i].Subjects[j].Code;
 			fin>>subjectStatus;
-			switch(subjectStatus){
-				case 0:
-					gRecs[i].Subjects[j].Status=eEnrolled;
-					break;
-				case 1:
-					gRecs[i].Subjects[j].Status=eProvisional;
-					break;
-				case 2:
-					gRecs[i].Subjects[j].Status=eWithdrawn;
-					break;				
-			}
+			gRecs[i].Subjects[j].Status=(StatusType)subjectStatus;
 			fin>>gRecs[i].Subjects[j].Mark;	
 		}
 		i++;
@@ -331,7 +302,7 @@ bool ReadTextFile(char Filename[]){
 }
 
 
-bool WriteTextFile(char Filename[]){
+bool WriteTextFile(const char *Filename){
  //writes text data from gRecs[] to file
   
 	int i,j;
@@ -355,7 +326,7 @@ bool WriteTextFile(char Filename[]){
 	return 1;
 }
 
-bool ReadBinaryFile(char Filename[]){ 								//reads binary data from file to gRecs[] array
+bool ReadBinaryFile(const char *Filename){ 								//reads binary data from file to gRecs[] array
 
 	int subjectStatus;
 	int numberOfRecords;
@@ -379,7 +350,7 @@ bool ReadBinaryFile(char Filename[]){ 								//reads binary data from file to g
 	
 }
 
-bool WriteBinaryFile(char Filename[]){ 								//writes binary data from gRecs[] to file
+bool WriteBinaryFile(const char *Filename){ 								//writes binary data from gRecs[] to file
 	int i,j;
 	ofstream fout;
 	fout.open(Filename,ios::out|ios::binary);
@@ -396,7 +367,7 @@ bool WriteBinaryFile(char Filename[]){ 								//writes binary data from gRecs[]
 	return 1;
 }
 
-void WriteBinaryRecord(char Filename[], int Pos){
+void WriteBinaryRecord(const char *Filename, int Pos){
 	ofstream fout;
 	fout.open(Filename,ios::out|ios::binary);
 	if(!fout.good()){
@@ -404,7 +375,7 @@ void WriteBinaryRecord(char Filename[], int Pos){
 			exit(1);
 		}	
 	fout.seekp(sizeof(int) + Pos * sizeof(StudentRecord), ios::beg); // seek to position
-	fout.write((char*)&gRecs[Pos], sizeof(StudentRecord)); // write record
+	fout.write((char*)&gRecs[Pos], sizeof(StudentRecord)); 			 // write record
 }
 
 
