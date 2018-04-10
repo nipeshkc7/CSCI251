@@ -1,5 +1,12 @@
-// put your name etc here...
+/********************************************************************
 
+ * CSCI251 - Ex2
+
+ * <Arpan Kc - akc992>
+
+ * ex2.cpp 
+
+ ********************************************************************/
 #include<iostream>
 #include<fstream>
 #include<cstring>
@@ -41,11 +48,12 @@ int main(){
 	cout << "Begin test" << endl << endl;
 	Initialise();
 	ReadFile();
+	DisplayAllRecs();
+
 	FindRecord();
-//	RemoveRecord();
-//	FindRecord();
-//	DisplayAllRecs();
-//	DeleteList();
+	RemoveRecord();
+	FindRecord();
+	DeleteList();
 	cout << endl << "End test" << endl;
 	return 0;
 }
@@ -59,20 +67,7 @@ void Initialise(){
 
 // Reads data file into linked list
 void ReadFile(){
-/*
-	declare ifstream and open file in cDataFileName
-	if( file does not open display file not found msg and exit
-	while not eof
-		read PhoneNo
-		if read fails break while loop
-		ignore (eat) end of line left over from fin>>PhoneNo
-		read whole name with getline()
-		read whole address with getline()
-		AddRecord(PhoneNo,Name,Address); // to the list
-	end while
-	close the file
-	display the number of records read from the file
-*/
+
 	ifstream fin;
 	int counter=0;
 	long PhoneNo;
@@ -82,8 +77,10 @@ void ReadFile(){
 	if(!fin.good()){cout<<"Cannot open file"; exit(1);}
 	
 	while(!fin.eof()){
-		fin>>PhoneNo;
-		//TO:DO :: if read fails break while loop
+		//fin>>PhoneNo;
+		if(!(fin>>PhoneNo)){
+			break;
+		}
 		fin.ignore(200,'\n');	
 		fin.getline(Name,20);
 		fin.getline(Address,40);
@@ -98,22 +95,7 @@ void ReadFile(){
 
 // Adds record to tail of linked list
 void AddRecord(long PhoneNo, char *Name, char *Address){
-/*
-	declare a Tmp PhoneRecord pointer
-	allocate new PhoneRecord to Tmp ptr
-	set Tmp->PhoneNo to PhoneNo;
-	string copy Name into Tmp->Name
-	string copy Address into Tmp->Address
-	set Tmp->Next to NULL
-	if Head is NULL set Head = Tmp;
-	else{
-		declare PhoneRecord *Crnt and set to Head;
-		while Crnt->Next is not NULL
-			set Crnt to Crnt->Next
-		end while
-		set Crnt->Next to Tmp;
-	end else
-*/
+
 	
 	PhoneRecord *Tmp;
    	Tmp=new PhoneRecord;
@@ -136,24 +118,11 @@ void AddRecord(long PhoneNo, char *Name, char *Address){
 
 // Finds record in linked list and displays it
 void FindRecord(){
-/*
-	declare long PhoneNo
-	display "Enter phone number to find: "
-	get PhoneNo from user
-	declare PhoneRecord *Crnt  and set to Head
-	while Crnt is not NULL AND Crnt->PhoneNo is not equal to PhoneNo
-		Crnt = Crnt->Next;
-	end while
-	if Crnt is not NULL
-		DisplayRec(Crnt)
-	else
-		display  "Record not found"
-		*/
 	
 	long PhoneNo;
 	cout<<"Enter phone number to find: ";
 	cin>>PhoneNo;
-	PhoneRecord *Crnt=Head;      					//  <== Possible error here?
+	PhoneRecord *Crnt=Head;      					
 	while(Crnt!=NULL && Crnt->PhoneNo !=PhoneNo){
 		Crnt=Crnt->Next;
 	}
@@ -168,16 +137,6 @@ void FindRecord(){
 
 // Removes record from head of linked list
 void RemoveRecord(){
-/*
-	if Head is NULL display "List is empty"
-	else
-		display  "Head record removed:
-		DisplayRec(Head)
-		declare PhoneRecord *Tmp  and set to Head;
-		set Head to Head->Next
-		delete Tmp;
-	end else
-*/
 
 	if(Head==NULL){ cout<<"List is empty";}
 	else{
@@ -185,6 +144,8 @@ void RemoveRecord(){
 		DisplayRec(Head);
 		PhoneRecord *Tmp=Head;
 		Head=Head->Next;
+		delete[] Tmp->Name;
+		delete[] Tmp->Address;
 		delete Tmp;
 	}
 }
@@ -214,22 +175,13 @@ void DisplayRec(PhoneRecord *RecPtr){
 
 // Deletes memory in list
 void DeleteList(){
-/*
-	declare PhoneRecord *Crnt and set to  Head
-	while Head is not NULL
-		declare PhoneRecord *Tmp and set to Head
-		set Head to Head->Next
-		delete Tmp
-	end while
-	display "List deleted"
-*/
 
 	PhoneRecord *Crnt=Head;
 	while(Head!=NULL){
 		PhoneRecord *Tmp = Head;
 		Head=Head->Next;
-		delete Tmp->Name;
-		delete Tmp->Address;
+		delete[] Tmp->Name;
+		delete[] Tmp->Address;
 		delete Tmp;
 		
 	}
