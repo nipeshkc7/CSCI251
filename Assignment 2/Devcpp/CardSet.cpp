@@ -155,30 +155,24 @@ void CardSet::MergeShuffle(CardSet &newCardSet)
 {
 	int *temp=new int[nCards+newCardSet.nCards];
 	int i;
-	
-	for (i=0;i<nCards;i++){
-		temp[i]=Card[i];
-	}	
-	
-	
-	//Merging the two Card arrays into a single temp array ::
-	for(i=0;i<nCards;i++){
-		temp[i]=Card[i];
-	}
-	for(i=nCards;i<(nCards+newCardSet.nCards);i++){
-		temp[i]=newCardSet.Card[i-nCards];
+	int tempIndex=0;
+	int NewNCards=newCardSet.nCards+nCards;
+
+	for(i=0;i<NewNCards;i++){
+		if(nCards!=0){
+			temp[tempIndex]=Deal();
+			tempIndex++;
+		}
+		if(newCardSet.nCards!=0){
+			temp[tempIndex]=newCardSet.Deal();
+			tempIndex++;
+		}
 	}
 
 	delete [] Card;	
 		
-	
-	Card= new int[nCards+ newCardSet.nCards];
 	Card= temp;
-	nCards=nCards+newCardSet.nCards;
-
-	//Shuffling the Card array again:
-	Shuffle();
-	
+	nCards=NewNCards;	
 	newCardSet.nCards=0;
 	newCardSet.Card=NULL; // Emptying the argument cardset
 	
