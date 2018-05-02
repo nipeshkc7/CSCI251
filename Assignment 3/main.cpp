@@ -1,6 +1,6 @@
 /***************************************************************************
  * main.cpp - CSCI251/851 - Ass3 - main() driver for testing WordStats class
- * <Your name> <your login> <date last modified>
+ * <Arpan KC> <akc992> <May 2, 2018>
  ***************************************************************************/
  
 #include <iostream>

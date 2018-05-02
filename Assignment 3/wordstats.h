@@ -1,6 +1,6 @@
 /**********************************************************************
  * wordstats.h - CSCI251 - Ass3 - Contains WordStats class declaration
- * <your name> <your login> <date last modified>
+ * <Arpan KC> <akc992> <May 2, 2018>
  **********************************************************************/
 #ifndef WORDSTATS_H_
 #define WORDSTATS_H_

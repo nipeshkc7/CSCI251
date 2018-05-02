@@ -1,6 +1,6 @@
 /**********************************************************************
  * wordstats.cpp - CSCI251 - Ass3 - Contains WordsStats class definition
- * <your name> <your login> <date last modified>
+ * <Arpan KC> <akc992> <May 2, 2018>
  **********************************************************************/
 #include <iostream>
 #include <iomanip>
@@ -106,6 +106,25 @@ void WordStats::DisplayMostFreqUnknownWords(){
 
 // Displays original text from KnownWords & UnknownWords
 void WordStats::DisplayOriginalText(){
+	map<int,string> PositionMap;
+	map<int,string>::iterator it;
+	for(WordMapIter Iter=KnownWords.begin();Iter!=KnownWords.end();Iter++){
+		vector<int> vect=Iter->second;
+		for(int i=0;i<vect.size();i++){
+			PositionMap.insert(PositionMap.begin(),pair<int,string>(vect[i],Iter->first));
+		}
+	}
+	for(WordMapIter Iter=UnknownWords.begin();Iter!=UnknownWords.end();Iter++){
+		vector<int> vect=Iter->second;
+		for(int i=0;i<vect.size();i++){
+			PositionMap.insert(PositionMap.begin(),pair<int,string>(vect[i],Iter->first));
+		}
+	}
+	cout<<endl;
+	for(map<int,string>::iterator it=PositionMap.begin();it!=PositionMap.end();it++){
+		cout<< it->second <<" ";
+	}
+	cout<<endl;
 }
 
 // ============ Private Fns ========================
