@@ -41,6 +41,7 @@ class WordStats
 		void StoreToMap(WordMap& ,string,int);
 		void DisplayStats(WordMap&);
 		bool isNumber(string);
+		void DisplayFrequency(WordMap);
 };
 
 #endif

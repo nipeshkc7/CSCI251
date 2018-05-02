@@ -67,7 +67,6 @@ void WordStats::ReadTxtFile(){
 			if(Dictionary.find(temp) != Dictionary.end())
 			{//if word found in the dictionary
 				StoreToMap(KnownWords,temp,PositionIndex);
-				//counterTotalKnownWords++;	
 			}
 			else
 			{//If word not found in the dictionary
@@ -97,21 +96,12 @@ void WordStats::DisplayUnknownWordStats(){
 
 // Displays 20 most frequent words in KnownWords
 void WordStats::DisplayMostFreqKnownWords(){
-	multimap<int,string> frequencyMap;
-	multimap<int,string>::iterator fIter;
-	for(WordMapIter iter=KnownWords.begin();iter!=KnownWords.end();iter++){
-		vector<int> vect= iter->second;
-		string word=iter->first; 
-		frequencyMap.insert(frequencyMap.begin(),pair<int,string>(vect.size(),word));
-	}
-//	
-//	for(multimap<int,string>::iterator fIter=frequencyMap.begin();fIter!=frequencyMap.end();fIter++ ){
-//		cout<< fIter->first << " : " <<fIter->second<<endl;;
-//	}
+	DisplayFrequency(KnownWords);
 }
 
 // Displays 20 most frequent words in UnknownWords
 void WordStats::DisplayMostFreqUnknownWords(){
+	DisplayFrequency(UnknownWords);
 }
 
 // Displays original text from KnownWords & UnknownWords
@@ -161,6 +151,23 @@ bool WordStats::isNumber(string word){
 			return true;
 	}
 	return false;
+}
+
+void WordStats::DisplayFrequency(WordMap map){
+	multimap<int,string> frequencyMap;
+	multimap<int,string>::reverse_iterator revIterator;
+	for(WordMapIter iter=map.begin();iter!=map.end();iter++){
+		vector<int> vect= iter->second;
+		string word=iter->first; 
+		frequencyMap.insert(frequencyMap.begin(),pair<int,string>(vect.size(),word));
+	}
+	
+	revIterator=frequencyMap.rbegin();
+	cout<<setw(13)<<"Word"<<setw(16)<<"Frequency"<<endl;
+	for(int i=0;i<20;i++){
+		cout<< setw(13)<< revIterator->second <<setw(16)<<revIterator->first<<endl;
+		revIterator++;
+	}
 }
 
 
