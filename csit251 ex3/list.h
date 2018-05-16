@@ -1,7 +1,7 @@
 /*********************************************************************
  * CSCI251/851 - Exercise 3
  * list.h - Declaration of LinkedList class
- * Put you name, login and the date last modified here.
+ * Arpan KC, akc992 , April 27, 2018.
  *
  *********************************************************************/
 

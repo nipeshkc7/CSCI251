@@ -27,7 +27,8 @@ void WordStats::ReadDictionary(){
 	while(!fin.eof()){
 		string temp;
 		getline(fin,temp);
-		
+		if(fin.fail())
+			break;
 		//Converting to lowercase
 		for (int i=0;i<temp.length();i++)   
 		   temp[i]=tolower(temp[i]);
@@ -60,10 +61,12 @@ void WordStats::ReadTxtFile(){
 	while(!fin.eof()){
 		string temp;
 		fin>>temp;
+		if(fin.fail())
+			break;
+			
 		temp=StripPunctuation(temp); //strips punctuation from argument
 
-		//set<string>::iterator it=Dictionary.find(temp);
-		if(!isNumber(temp)){
+		if(!isJustPunctuation(temp)){
 			if(Dictionary.find(temp) != Dictionary.end())
 			{//if word found in the dictionary
 				StoreToMap(KnownWords,temp,PositionIndex);
@@ -164,12 +167,10 @@ void WordStats::DisplayStats(WordMap &map){
 	}
 }
 
-bool WordStats::isNumber(string word){
-	for(int i=0;i<word.length();i++){
-		if(isdigit(word[i]))
-			return true;
-	}
-	return false;
+bool WordStats::isJustPunctuation(string word){
+	if(word.length()==1 && ispunct(word[0]))
+		return true;
+	return false;	
 }
 
 void WordStats::DisplayFrequency(WordMap map){

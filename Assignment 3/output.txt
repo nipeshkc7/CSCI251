@@ -1,0 +1,276 @@
+Begin Text File Analyser Tests
+
+Step-1 Reading and displaying dictionary
+
+Reading data from Dictionary.txt..
+25129 Records read.
+
+Displaying the first 20 records
+a
+a&m
+a&p
+a's
+aarhus
+aaron
+ababa
+aback
+abacus
+abalone
+abandon
+abase
+abash
+abate
+abater
+abbas
+abbe
+abbey
+abbot
+abbott
+
+Step-2 Reading words from text file
+
+Total words:: 188
+Total unknown words::78
+Total known words:: 110
+
+Step-3 Displaying known words:
+           Words   Count     Occurrences
+               a      14      85 121 131 143 147 154 185 191 204 219 237 243 311 334
+           about       1      88
+       aggregate       1     250
+              an       2     116 138
+             and       7      70 97 170 194 215 350 353
+          animal       2      24 139
+             ann       3     117 180 300
+         another       1     159
+             any       1      84
+        approach       1     301
+             are       2      12 262
+      artificial      11       1 5 129 150 161 173 188 199 213 239 260
+              as       2      65 223
+              at       2     184 236
+       attention       1     318
+            been       2      62 331
+         between       2     149 187
+         biology       1     328
+           board       1     349
+           brain       2     140 313
+              by       4      17 35 56 203
+             can       2     152 167
+             cat       2      66 69
+          common       1     179
+      constitute       1      23
+         contain       1      54
+       diagnosis       1     355
+       different       2     266 270
+              do       1      81
+            each       2     141 198
+          evolve       1     102
+         example       2      43 58
+           first       1     281
+             for       1      42
+            from       4     109 156 279 327
+        function       1     206
+             fur       1      94
+            goal       1     297
+            have       5      61 93 218 242 330
+         however       1     315
+           human       1     312
+        identify       2      51 75
+              if       1     248
+           image       1      45
+         improve       1      31
+              in       6      44 77 137 178 264 306
+           input       1     282
+         instead       1     100
+              is       4     118 190 201 255
+              it       2     169 177
+       knowledge       1      87
+            last       1     285
+           learn       2      28 49
+         machine       1     343
+        material       1     112
+             may       2     241 268
+           might       1      48
+        multiple       1     293
+         network       1     346
+          neural       3       2 6 20
+          neuron       2     162 200
+              no       1      68
+              of      11     106 123 134 146 197 207 210 233 272 298 336
+              on       5      33 120 274 320 333
+             one       1     157
+            only       1     247
+              or       4       9 67 126 229
+        original       1     296
+           other       1      78
+            over       1     316
+             own       1     104
+         perform       1     269
+     performance       1      32
+          priori       1      86
+         process       2     115 168
+     programming       1      41
+            real       1     192
+        relevant       1     107
+            same       1     308
+            sent       1     258
+             set       1     105
+          signal       7     155 166 172 183 235 251 257
+          social       1     345
+           solve       1     304
+        specific       1     322
+          speech       1     341
+        strength       1     232
+            such       2      26 245
+             sum       1     209
+         synapse       1     148
+            that      10      22 53 60 91 113 163 221 246 253 310
+             the      19      18 72 110 160 165 182 195 208 226 231 234 249 256 280 284 291 295 299 307
+           their       2     103 275
+            then       1     171
+            they       5      47 80 92 101 114
+            this       1      82
+       threshold       2     244 254
+            time       1     317
+              to       7      50 74 158 176 283 303 325
+        transmit       1     153
+          travel       1     278
+         variety       1     335
+         version       2     133 145
+           video       1     351
+          vision       1     340
+             was       1     302
+             way       1     309
+          weight       2     220 227
+         without       2      39 83
+           would       1     314
+Step-4 Displaying unknown words:
+           Words   Count     Occurrences
+               -       2       0 4
+         adjusts       1     222
+           after       1     289
+       analyzing       1      57
+            anns       2       8 329
+           based       1     119
+      biological       2      19 135
+      calculated       1     202
+          called       1     128
+        cat-like       1      98
+            cats       3      55 76 89
+ characteristics       1     108
+      collection       1     122
+        computer       1     339
+       computing       1      13
+       connected       2     124 175
+      connection       3     142 186 238
+   connectionist       1      10
+     connections       1     216
+     considering       1      36
+         crosses       1     252
+       decreases       1     230
+      deviations       1     326
+              eg       1      90
+        examples       1      37
+           faces       1      99
+       filtering       1     347
+         focused       1     319
+           games       1     352
+       generally       1      38
+              ie       1      29
+          images       3      52 59 79
+ implementations       1     181
+       including       1     338
+       increases       1     228
+          inputs       2     212 276
+        inspired       1      16
+             its       1     211
+           kinds       1     271
+         labeled       1      64
+           layer       1     287
+          layers       3     265 267 292
+         leading       1     324
+        learning       2     111 224
+        manually       1      63
+        matching       1     321
+         medical       1     354
+        networks       3       3 7 21
+         neurons       8     130 136 151 174 189 214 240 261
+           nodes       1     127
+      non-linear       1     205
+          number       1     193
+       organized       1     263
+          output       2     196 286
+         playing       1     348
+        possibly       1     288
+        problems       1     305
+        proceeds       1     225
+   progressively       1      30
+        receives       1     164
+     recognition       2      46 342
+         results       1      73
+         signals       1     277
+      simplified       2     132 144
+         systems       3      11 14 27
+           tails       1      95
+   task-specific       1      40
+           tasks       3      34 323 337
+           times       1     294
+ transformations       1     273
+     translation       1     344
+      traversing       1     290
+       typically       2     217 259
+           units       1     125
+            used       1     332
+           using       1      71
+         vaguely       1      15
+        whiskers       1      96
+Step-5 Displaying most frequent known words
+         Word       Frequency
+          the              19
+            a              14
+   artificial              11
+           of              11
+         that              10
+          and               7
+       signal               7
+           to               7
+           in               6
+         have               5
+           on               5
+         they               5
+           by               4
+         from               4
+           is               4
+           or               4
+          ann               3
+       neural               3
+           an               2
+       animal               2
+Step-6 Displaying most frequent unknown words
+         Word       Frequency
+      neurons               8
+         cats               3
+   connection               3
+       images               3
+       layers               3
+     networks               3
+      systems               3
+        tasks               3
+            -               2
+         anns               2
+   biological               2
+    connected               2
+       inputs               2
+     learning               2
+       output               2
+  recognition               2
+   simplified               2
+    typically               2
+      adjusts               1
+        after               1
+Step-7 Displaying original text
+
+- artificial neural networks - artificial neural networks anns or connectionist systems are computing systems vaguely inspired by the biological neural networks that constitute animal such systems learn ie progressively improve performance on tasks by considering examples generally without task-specific programming for example in image recognition they might learn to identify images that contain cats by analyzing example images that have been manually labeled as cat or no cat and using the results to identify cats in other images they do this without any a priori knowledge about cats eg that they have fur tails whiskers and cat-like faces instead they evolve their own set of relevant characteristics from the learning material that they process an ann is based on a collection of connected units or nodes called artificial neurons a simplified version of biological neurons in an animal brain each connection a simplified version of a synapse between artificial neurons can transmit a signal from one to another the artificial neuron that receives the signal can process it and then signal artificial neurons connected to it in common ann implementations the signal at a connection between artificial neurons is a real number and the output of each artificial neuron is calculated by a non-linear function of the sum of its inputs artificial neurons and connections typically have a weight that adjusts as learning proceeds the weight increases or decreases the strength of the signal at a connection artificial neurons may have a threshold such that only if the aggregate signal crosses that threshold is the signal sent typically artificial neurons are organized in layers different layers may perform different kinds of transformations on their inputs signals travel from the first input to the last output layer possibly after traversing the layers multiple times the original goal of the ann approach was to solve problems in the same way that a human brain would however over time attention focused on matching specific tasks leading to deviations from biology anns have been used on a variety of tasks including computer vision speech recognition machine translation social network filtering playing board and video games and medical diagnosis
+
+End Text File Analyser Tests

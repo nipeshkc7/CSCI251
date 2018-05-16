@@ -40,7 +40,7 @@ class WordStats
 		string StripPunctuation(string temp);
 		void StoreToMap(WordMap& ,string,int);
 		void DisplayStats(WordMap&);
-		bool isNumber(string);
+		bool isJustPunctuation(string);
 		void DisplayFrequency(WordMap);
 };
 
