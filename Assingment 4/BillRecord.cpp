@@ -27,17 +27,18 @@ bool BillRecord::hasDiscount(){
 bool BillRecord::ReadCustDetails(ifstream &fin)
 {
 	//put code here for reading the customer details part of file record only into the private data members
-	string BlType;
-	fin.ignore(200,'\n');
+//	string BlType;
+	//fin.ignore(200,'\n');
 	//cout<<endl;
 	
 	getline(fin,Supplier);
 	getline(fin,Name);
 	getline(fin,Address);
 	fin>>AccountBalance;
-	fin.ignore(200,'\n');
+//	fin.ignore(200,'\n');
 	fin>>DaysSinceLastReading;
-	fin.ignore(200,'\n');	
+	//fin.ignore(200,'\n');
+	return true;	
 }
 
 // Displays customer details part of record on screen
@@ -160,8 +161,6 @@ void ElectBillRecord::UpdateBalance(){
 }
 bool GasBillRecord::ReadUsageInfo(ifstream &fin)
 {
-	//the code here should jusy test BillType and read (eat) the usage info from file and discard it
-	//later we will override this fn to read usage info into the approbriate derived classes private data members
 	fin>>PreviousReading;
 	fin>>CurrentReading;
 	fin>>HeatingValue;
@@ -185,10 +184,7 @@ void GasBillRecord::UpdateBalance(){
 }
 
 bool PhoneBillRecord::ReadUsageInfo(ifstream &fin)
-{
-	//the code here should jusy test BillType and read (eat) the usage info from file and discard it
-	//later we will override this fn to read usage info into the approbriate derived classes private data members
-	
+{	
 	fin>>NumberOfLocalCalls;
 	fin>>LocalCallRate;
 	fin>>LongDistCallTime;

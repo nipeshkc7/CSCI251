@@ -36,10 +36,11 @@ bool BillSystem::ReadFile(char *fname)
 	while(!fin.eof()){
 		BillRecord *temp;
 		string s;
-		fin>> s;
+		//fin>> s;
+		getline(fin,s);
 		if(fin.fail())
 			break;
-		
+		//cout<<s<<endl;	
 		if(s.compare("Elect")==0){temp= new ElectBillRecord;}
 		if(s.compare("Phone")==0){temp= new PhoneBillRecord;}
 		if(s.compare("Gas")==0){temp= new GasBillRecord;}
@@ -49,6 +50,7 @@ bool BillSystem::ReadFile(char *fname)
 		if(!temp->ReadUsageInfo(fin))
 			break;
 		BRecs.push_back(temp);
+		getline(fin,s);
 	}
 	
 	fin.close();

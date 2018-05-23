@@ -45,12 +45,12 @@ class BillRecord {
 
 class ElectBillRecord:public BillRecord{
 	private:	
-		double PreviousReading;
-		double CurrentReading;
-		float Rate1;
-		float Rate1ThresHold;
-		float Rate2;
-		float SupplyCharge;
+		int PreviousReading;
+		int CurrentReading;
+		double Rate1;
+		int Rate1ThresHold;
+		double Rate2;
+		double SupplyCharge;
 		
 	public:
 		bool ReadUsageInfo(ifstream &fin);
@@ -60,11 +60,11 @@ class ElectBillRecord:public BillRecord{
 
 class PhoneBillRecord:public BillRecord{
 	private:
-		double NumberOfLocalCalls;
-		float LocalCallRate;
-		float LongDistCallTime;
-		float LongDistCallRate;
-		float Rental;
+		int NumberOfLocalCalls;
+		double LocalCallRate;
+		int LongDistCallTime;
+		double LongDistCallRate;
+		double Rental;
 	
 	public:
 		bool ReadUsageInfo(ifstream &fin);
@@ -74,11 +74,11 @@ class PhoneBillRecord:public BillRecord{
 
 class GasBillRecord:public BillRecord{
 	private:	
-		double PreviousReading;
-		double CurrentReading;
+		int PreviousReading;
+		int CurrentReading;
 		double HeatingValue;
-		float Rate;
-		float SupplyCharge;
+		double Rate;
+		double SupplyCharge;
 	
 	public:
 		bool ReadUsageInfo(ifstream &fin);
