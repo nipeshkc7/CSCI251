@@ -104,7 +104,7 @@ int main()
 			
 			cout<<"\n\n";
 		}
-		catch(string err){
+		catch(string &err){
 			cout<<err<<endl;				
 		}
 	}
